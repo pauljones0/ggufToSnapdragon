@@ -1,0 +1,38 @@
+name: Test & Build
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "back_end/**"
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "back_end/**"
+
+jobs:
+  test:
+    name: Go Test, Vet & Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./back_end
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+          cache-dependency-path: back_end/go.sum
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Build
+        run: go build ./...
+
+      - name: Test (with race detector)
+        run: go test ./... -count=1 -race -timeout 60s

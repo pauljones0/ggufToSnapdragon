@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+
+# Next.js Build Output
+.next/
+out/
+build/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Packer
+packer_cache/
+*.bin
+*.img
+*.vmdk
+*.ova
+*.vhdx
+*.iso
+*.box
+
+# Logs
+*.log
+back_end/test_out.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
